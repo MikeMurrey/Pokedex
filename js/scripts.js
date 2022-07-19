@@ -1,18 +1,13 @@
-alert('Hello World');
+/*jshint esversion: 6*/
 
-let myName = 'Bob';
-document.write(myName);
-
-myName = 'John Doe';
-document.write(myName);
-
-let simpleAddition=2+2;
-document.write(simpleAddition);
-
-let size=100;
-let doubleSize=size*2;
-let minSize=(doubleSize*2)-(size/2);
-document.write(minSize);
-
-let favoriteFood='Green Chili';
-document.write(favoriteFood);
+let pokemonList = [
+  {name: 'Bulbasaur', height: 0.7, type: ['Grass', 'Poison']},
+  {name: 'Ivysaur', height: 1, type: ['Grass', 'Poison']},
+  {name: 'Venusaur', height: 2, type: ['Grass', 'Poison']},
+  {name: 'Charmander', height: 0.6, type: ['Fire']},
+  {name: 'Charmeleon', height: 1.1, type: ['Fire']},
+  {name: 'Charizard', height: 1.7, type: ['Fire', 'Flying']},
+  {name: 'Squirtle', height: 0.5, type: ['Water']},
+  {name: 'Wartortle', height: 1, type: ['Water']},
+  {name: 'Blastoise', height: 1.6, type: ['Water']},
+];
