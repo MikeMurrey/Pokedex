@@ -14,12 +14,12 @@ let pokemonList = [
 
 // loop will iterate over the pokemonList array and write each pokemons' name and height
 // if/else used to write special text for pokemon with a height greater than/equal to 2 or less than/equal to 0.5
-for (let i = 0; i < pokemonList.length; i++){
-  if (pokemonList[i].height >= 2){
-    document.write('<p>' + pokemonList[i].name + ' (height: ' +pokemonList[i].height + ' m) That\'s a tall one!');
-  } else if (pokemonList[i].height <= 0.5){
-    document.write('<p>' + pokemonList[i].name + ' (height: ' +pokemonList[i].height + ' m) This one is quite small!');
+pokemonList.forEach(function(pokemon) {
+  if (pokemon.height >= 2){
+    document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ' m) That\'s a tall one!');
+  } else if (pokemon.height <= 0.5){
+    document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ' m) This one is quite small!');
   } else {
-    document.write('<p>' + pokemonList[i].name + ' (height: ' +pokemonList[i].height + ' m)</p>');
+    document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ' m)</p>');
   }
-}
+});
