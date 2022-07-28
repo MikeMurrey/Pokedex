@@ -27,6 +27,7 @@ let pokemonRepository = (function () {
   };
 })();
 
+let pokemonList = pokemonRepository.getAll();
 
 // loop will iterate over the pokemonList array and write each pokemons' name and height
 // if/else used to write special text for pokemon with a height greater than/equal to 2 or less than/equal to 0.5
