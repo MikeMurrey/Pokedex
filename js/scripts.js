@@ -32,9 +32,20 @@ let pokemonRepository = (function () {
     return pokemonList;
   }
 
+  function addListItem(pokemon){
+    let pokemonList = document.querySelector('.pokemon-list');
+    let listpokemon = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('button-class');
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
+  }
+
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
+    addListItem: addListItem
   };
 })();
 
@@ -42,11 +53,5 @@ let pokemonRepository = (function () {
 // loop will iterate over the pokemonList array and write each pokemons' name and height
 // if/else used to write special text for pokemon with a height greater than/equal to 2 or less than/equal to 0.5
 pokemonRepository.getAll().forEach(function(pokemon) {
-  let pokemonList = document.querySelector('.pokemon-list');
-  let listpokemon = document.createElement('li');
-  let button = document.createElement('button');
-  button.innerText = pokemon.name;
-  button.classList.add('button-class');
-  listpokemon.appendChild(button);
-  pokemonList.appendChild(listpokemon);
+  pokemonRepository.addListItem(pokemon);
 });
