@@ -3,10 +3,31 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
-  background-color: #D3D3D3;
+  background-color: rgb(223, 223, 223);
 }
 
 .page-header__logo {
-  width: 200px;
+  width: 250px;
   height: auto;
+}
+
+.pokemon-list {
+  list-style-type: none;
+}
+
+.button-class {
+  font-family: inherit;
+  font-size: 16px;
+  border: none;
+  color: white;
+  text-align: center;
+  background-color: rgb(0, 117, 190);
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.button-class:hover {
+  transition: all 0.5s ease 0s;
+  background-color: rgb(10, 40, 95);
+  cursor: pointer;
 }
