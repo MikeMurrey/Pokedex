@@ -13,10 +13,12 @@ let pokemonRepository = (function () {
     {name: 'Blastoise', height: 1.6, type: ['Water']}
   ];
 
+// used to add new pokemon to the list
   function add(pokemon) {
     pokemonList.push(pokemon);
   }
 
+// used to return a list of pokemon and their characteristics
   function getAll() {
     return pokemonList;
   }
@@ -27,11 +29,10 @@ let pokemonRepository = (function () {
   };
 })();
 
-let pokemonList = pokemonRepository.getAll();
 
 // loop will iterate over the pokemonList array and write each pokemons' name and height
 // if/else used to write special text for pokemon with a height greater than/equal to 2 or less than/equal to 0.5
-pokemonList.forEach(function(pokemon) {
+pokemonRepository.getAll().forEach(function(pokemon) {
   if (pokemon.height >= 2){
     document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ' m) That\'s a tall one!');
   } else if (pokemon.height <= 0.5){
