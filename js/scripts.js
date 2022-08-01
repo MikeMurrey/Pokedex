@@ -15,7 +15,16 @@ let pokemonRepository = (function () {
 
 // used to add new pokemon to the list
   function add(pokemon) {
-    pokemonList.push(pokemon);
+    if (
+      typeof pokemon === 'object' &&
+      'name' in pokemon &&
+      'height' in pokemon &&
+      'types' in pokemon
+    ) {
+      pokemonList.push(pokemon);
+    } else {
+      console.log('pokemon does not fit criteria');
+    }
   }
 
 // used to return a list of pokemon and their characteristics
