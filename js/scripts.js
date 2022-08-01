@@ -32,6 +32,11 @@ let pokemonRepository = (function () {
     return pokemonList;
   }
 
+  // showDetails function used to get pokemon info that will be returned in console
+  function showDetails(pokemon) {
+    console.log(pokemon);
+  }
+
   function addListItem(pokemon){
     let pokemonList = document.querySelector('.pokemon-list');
     let listpokemon = document.createElement('li');
@@ -40,6 +45,10 @@ let pokemonRepository = (function () {
     button.classList.add('button-class');
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
+    // event listener below will return pokemon in console when its button is clicked
+    button.addEventListener('click', function() {
+      showDetails(pokemon);
+    });
   }
 
   return {
