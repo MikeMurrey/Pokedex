@@ -23,7 +23,9 @@ let pokemonRepository = (function () {
 
   // showDetails function used to get pokemon info that will be returned in console
   function showDetails(pokemon) {
-    console.log(pokemon.name);
+    pokemonRepository.loadDetails(pokemon).then(function() {
+      console.log(pokemon);
+    });
   }
 
   function addListItem(pokemon){
@@ -75,7 +77,8 @@ let pokemonRepository = (function () {
     getAll: getAll,
     addListItem: addListItem,
     loadList: loadList,
-    loadDetails: loadDetails
+    loadDetails: loadDetails,
+    showDetails: showDetails
   };
 })();
 
