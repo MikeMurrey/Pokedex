@@ -8,7 +8,8 @@ let pokemonRepository = (function () {
   function add(pokemon) {
     if (
       typeof pokemon === 'object' &&
-      'name' in pokemon
+      'name' in pokemon &&
+      'detailsUrl' in pokemon
     ) {
       pokemonList.push(pokemon);
     } else {
