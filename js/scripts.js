@@ -1,17 +1,8 @@
 /*jshint esversion: 6*/
 
 let pokemonRepository = (function () {
-  let pokemonList = [
-    {name: 'Bulbasaur', height: 0.7, type: ['Grass', 'Poison']},
-    {name: 'Ivysaur', height: 1, type: ['Grass', 'Poison']},
-    {name: 'Venusaur', height: 2, type: ['Grass', 'Poison']},
-    {name: 'Charmander', height: 0.6, type: ['Fire']},
-    {name: 'Charmeleon', height: 1.1, type: ['Fire']},
-    {name: 'Charizard', height: 1.7, type: ['Fire', 'Flying']},
-    {name: 'Squirtle', height: 0.5, type: ['Water']},
-    {name: 'Wartortle', height: 1, type: ['Water']},
-    {name: 'Blastoise', height: 1.6, type: ['Water']}
-  ];
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
 // used to add new pokemon to the list
   function add(pokemon) {
@@ -51,16 +42,48 @@ let pokemonRepository = (function () {
     });
   }
 
+  function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
+
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
+
   return {
     add: add,
     getAll: getAll,
-    addListItem: addListItem
+    addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails
   };
 })();
 
-
-// loop will iterate over the pokemonList array and write each pokemons' name and height
-// if/else used to write special text for pokemon with a height greater than/equal to 2 or less than/equal to 0.5
-pokemonRepository.getAll().forEach(function(pokemon) {
-  pokemonRepository.addListItem(pokemon);
+// first, load the data from pokeapi
+// then loop will iterate over the pokemonList array and write each pokemons' name and height
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
