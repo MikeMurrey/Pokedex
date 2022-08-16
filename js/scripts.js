@@ -69,7 +69,9 @@ const pokemonRepository = (function () {
       // specify what details I want assigned to the item
       pokemon.imageUrl = details.sprites.front_default;
       pokemon.height = details.height;
-      pokemon.types = details.types;
+      pokemon.weight = details.weight;
+      pokemon.types = details.types.map((type) => type.type.name).join(',');
+      pokemon.abilities = details.abilities.map((ability) => ability.ability.name).join(',');
     }).catch(function (e) {
       console.error(e);
     });
