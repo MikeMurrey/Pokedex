@@ -6,18 +6,22 @@ body {
   background-color: rgb(223, 223, 223);
 }
 
+ul {
+  list-style-type: none;
+}
+
 .page-header__logo {
   width: 100%;
   height: auto;
   max-width: 250px;
 }
 
-.pokemon-list {
-  list-style-type: none;
-  padding: 0px 0px 0px 20px;
+.pokemon-container {
+  display: flex;
+  justify-content: center;
 }
 
-.button-class {
+.pokemonButton {
   font-family: inherit;
   font-size: 16px;
   border: none;
@@ -32,4 +36,22 @@ body {
   transition: all 0.5s ease 0s;
   background-color: rgb(10, 40, 95);
   cursor: pointer;
+}
+
+#pokemon-modal {
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  right: 1rem;
+}
+
+.modal-title {
+  width: 100%;
+  text-align: center;
+}
+
+.btn-secondary {
+  background-color: #FB1B1B;
 }
