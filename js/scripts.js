@@ -26,15 +26,21 @@ let pokemonRepository = (function () {
   function showDetails(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function() {
       console.log(pokemon);
+      showModal(pokemon);
     });
   }
 
   function addListItem(pokemon){
     let pokemonList = document.querySelector('.pokemon-list');
     let listpokemon = document.createElement('li');
+    pokemonList.classList.add('group-list-item');
+    pokemonList.classList.add('col-sm-4', 'col-md-6', 'col-lg-6');
     let button = document.createElement('button');
-    button.innerText = pokemon.name;
-    button.classList.add('button-class');
+    button.classList.add('pokemonButton');
+    button.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#pokemon-modal');
+    $(button).addClass('button-class btn-block btn m1');
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
     // event listener below will return pokemon in console when its button is clicked
@@ -73,6 +79,36 @@ let pokemonRepository = (function () {
     }).catch(function (e) {
       console.error(e);
     });
+  }
+
+  // this will create a modal to show off the various pokemon details and image
+  function showModal(pokemon) {
+    let modalBody = $('.modal-body');
+    let modalTitle = $('.modal-title');
+
+    modalTitle.empty();
+    modalBody.empty();
+
+    let nameElement = $('<h1>' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) + '<h1>');
+
+    let imageElement = $('<img class="pokemon-image">');
+    imageElement.attr('src', pokemon.imageUrl);
+
+    let heightElement = $('<p>' + 'Height: ' + pokemon.height/10 + ' m' + '<p>');
+
+    let weightElement = $('<p>' + 'Weight: ' + pokemon.weight/10 + ' kg' + '<p>');
+
+    let typeElement = $('<p>' + 'Types: ' + pokemon.types + '<p>');
+
+    let abilitiesElement = $('<p>' + 'Abilities: ' + pokemon.abilities + '<p>');
+
+    modalTitle.append(nameElement);
+    modalBody.append(imageElement);
+    modalBody.append(heightElement);
+    modalBody.append(weightElement);
+    modalBody.append(typeElement);
+    modalBody.append(abilitiesElement);
+
   }
 
   return {
