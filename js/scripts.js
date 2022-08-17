@@ -108,7 +108,6 @@ let pokemonRepository = (function () {
     modalBody.append(weightElement);
     modalBody.append(typeElement);
     modalBody.append(abilitiesElement);
-
   }
 
   return {
