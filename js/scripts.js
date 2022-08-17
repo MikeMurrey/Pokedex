@@ -31,7 +31,7 @@ let pokemonRepository = (function () {
   }
 
   function addListItem(pokemon){
-    let pokemonList = document.querySelector('.pokemon-list');
+    let pokemonList = document.querySelector('.list-group');
     let listpokemon = document.createElement('li');
     pokemonList.classList.add('group-list-item');
     pokemonList.classList.add('col-sm-4', 'col-md-6');
