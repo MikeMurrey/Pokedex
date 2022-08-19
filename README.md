@@ -7,7 +7,7 @@ This simple app provides users with data about the first 150 Pokemon in a conven
 - HTML
 - CSS
 - JavaScript
--jQuery 3.3.1
+- jQuery 3.3.1
 - Bootstrap 4.3.1
 
 ## Link:
